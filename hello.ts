@@ -1,5 +1,7 @@
-function greet(person: string, date: Date) {
-  console.log(`Hello ${person}, today is ${date.toDateString()}`);
+function printId(id: number | string) {
+  console.log("Your ID is: " + id);
 }
 
-greet("Brendan", new Date());
+printId(101);
+
+printId("202");
