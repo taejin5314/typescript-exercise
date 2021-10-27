@@ -1,29 +1,31 @@
 "use strict";
-var Circle = /** @class */ (function () {
-    function Circle(radius) {
-        this.radius = radius;
-        this.radius = radius;
+var Queue = /** @class */ (function () {
+    function Queue() {
+        this.list = [];
     }
-    Circle.prototype.getArea = function () {
-        return this.radius * this.radius * Math.PI;
+    Object.defineProperty(Queue.prototype, "length", {
+        get: function () {
+            return this.list.length;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Queue.prototype.enqueue = function (item) {
+        this.list.push(item);
     };
-    return Circle;
-}());
-var Rectangle = /** @class */ (function () {
-    function Rectangle(width, height) {
-        this.width = width;
-        this.height = height;
-        this.width = width;
-        this.height = height;
-    }
-    Rectangle.prototype.getArea = function () {
-        return this.width * this.height;
+    Queue.prototype.dequeue = function () {
+        return this.list.shift();
     };
-    return Rectangle;
+    return Queue;
 }());
-var circle = new Circle(5);
-console.log(circle.radius);
-var shapes = [new Circle(5), new Rectangle(10, 5)];
-shapes.forEach(function (shape) {
-    console.log(shape.getArea());
-});
+var queue = new Queue();
+queue.enqueue(0);
+queue.enqueue(1);
+queue.enqueue(2);
+queue.enqueue(3);
+queue.enqueue(4);
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
